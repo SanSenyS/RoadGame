@@ -6,13 +6,13 @@
     <title>Unity WebGL Player | Zero Road</title>
   </head>
   <body style="text-align: center">
-    <canvas id="unity-canvas" width=1440 height=2960 style="width: 1440px; height: 2960px; background: #231F20"></canvas>
-    <script src="Build/0.loader.js"></script>
+    <canvas id="unity-canvas" width=600 height=900 style="width: 600px; height: 900px; background: #231F20"></canvas>
+    <script src="Build/RoadGame.loader.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/0.data",
-        frameworkUrl: "Build/0.framework.js",
-        codeUrl: "Build/0.wasm",
+        dataUrl: "Build/RoadGame.data",
+        frameworkUrl: "Build/RoadGame.framework.js",
+        codeUrl: "Build/RoadGame.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Zero Road",
