@@ -4,15 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Zero Road</title>
+	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+	<script>vkBridge.send('VKWebAppInit');</script>
   </head>
   <body style="text-align: center">
     <canvas id="unity-canvas" width=630 height=800 style="width: 630px; height: 800px; background: #828080"></canvas>
-    <script src="Build/RoadGamePC.loader.js"></script>
+    <script src="Build/RoadGame.loader.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/RoadGamePC.data",
-        frameworkUrl: "Build/RoadGamePC.framework.js",
-        codeUrl: "Build/RoadGamePC.wasm",
+        dataUrl: "Build/RoadGame.data",
+        frameworkUrl: "Build/RoadGame.framework.js",
+        codeUrl: "Build/RoadGame.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Zero Road",
