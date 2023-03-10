@@ -12,6 +12,9 @@
           jQuery(document).ready(function ($) // страница прогружена
           {
               vkBridge.send('VKWebAppInit');
+          });
+          function callMethodWallPost() // вызываем метод ВК
+          {
               vkBridge.send('VKWebAppShowWallPostBox', {
                   message: 'Первая запись на стене!'
               })
@@ -23,7 +26,8 @@
                   .catch((error) => {
                       console.log(error); // Ошибка
                   });
-          });
+
+          }
           var gameInstance = UnityLoader.instantiate("unity-container", "Build/MyUnityApp.json", { onProgress: UnityProgress });
 
           // Проверяем, запущено ли приложение на мобильном устройстве
