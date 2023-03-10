@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Zero Road</title>
-	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-	<script>vkBridge.send('VKWebAppInit');</script>
-  </head>
-  <body style="text-align: center">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+</head>
+<body style="text-align: center">
     <canvas id="unity-canvas" width=630 height=800 style="width: 630px; height: 800px; background: #828080"></canvas>
     <script src="Build/RoadGame.loader.js"></script>
     <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/RoadGame.data",
-        frameworkUrl: "Build/RoadGame.framework.js",
-        codeUrl: "Build/RoadGame.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Zero Road",
-        productVersion: "1.0",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
+
+        function callMethodWallPost() // вызываем метод ВК
+        {
+            vkBridge.send('VKWebAppShowWallPostBox', {
+                message: 'Первая запись на стене!'
+            })
+                .then((data) => {
+                    if (data.post_id) {
+                        console.log("ok"); // Запись размещена
+                    }
+                })
+                .catch((error) => {
+                    console.log(error); // Ошибка
+                });
+
+        }
+
+        jQuery(document).ready(function ($) // страница прогружена
+        {
+            vkBridge.send('VKWebAppInit'); // Инициализация ВК
+        });
     </script>
-  </body>
+    <script>
+        createUnityInstance(document.querySelector("#unity-canvas"), {
+            dataUrl: "Build/RoadGame.data",
+            frameworkUrl: "Build/RoadGame.framework.js",
+            codeUrl: "Build/RoadGame.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "DefaultCompany",
+            productName: "Zero Road",
+            productVersion: "1.0",
+            // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+            // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+        });
+    </script>
+</body>
 </html>
+
