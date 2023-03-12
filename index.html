@@ -105,7 +105,7 @@
                 .then((data) => {
                     const userId = data.id;
 
-                    unityI.SendMessage("VkId", "MethodName", "Hello Seny");
+                    unityI.SendMessage("VkId", "MethodName", userId);
                     alert(userId);
                 })
                 .catch((error) => {
