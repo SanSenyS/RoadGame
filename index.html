@@ -121,17 +121,19 @@
     </script>
 	<script src="//vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
     <script type="text/javascript">
-        VK.init({
-            apiId: 51572052
-    });
+document.addEventListener("DOMContentLoaded", function(event) {
+  VK.init({
+    apiId: 51572052
+  });
 
-    VK.Auth.getLoginStatus(function(response) {
-  if (response.session) {
-    VK.callMethod("VKWebAppGetUserInfo", {}, function(userInfo) {
-      var userId = userInfo.id;
-      UnitySendMessage("GameObjectName", "MethodName", userId);
-    });
-  }
+  VK.Auth.getLoginStatus(function(response) {
+    if (response.session) {
+      VK.callMethod("VKWebAppGetUserInfo", {}, function(userInfo) {
+        var userId = userInfo.id;
+        UnitySendMessage("GameObjectName", "MethodName", userId);
+      });
+    }
+  });
 });
   </script>
 </body>
