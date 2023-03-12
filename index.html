@@ -108,7 +108,7 @@
                 .then((data) => {
                     const userId = data.id;
                     alert(userId);
-                    UnitySendMessage("GameObjectName", "MethodName", userId);
+                    UnityPlayer.UnitySendMessage("GameObjectName", "MethodName", userId);
                 })
                 .catch((error) => {
                     console.log(error);
