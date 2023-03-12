@@ -99,7 +99,15 @@
     <script>
 
         function FromUnityToJs() {
-            callMethodWallPost();
+            return vkBridge.send("VKWebAppGetUserInfo", {})
+                .then((data) => {
+                    const userId = data.id;
+                    alert(userId);
+                    return userId;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
 
         function callMethodWallPost() // вызываем метод ВК
