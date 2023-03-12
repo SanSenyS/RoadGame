@@ -111,7 +111,7 @@
             vkBridge.send("VKWebAppGetUserInfo", {})
                 .then((data) => {
                     const userId = data.id;
-                    unityI.SendMessage("VkId", "MethodName", userId.ToString());
+                    unityI.SendMessage("VkId", "MethodName", userId.toString());
                     alert(userId);
                 })
                 .catch((error) => {
