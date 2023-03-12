@@ -102,7 +102,7 @@
 
 
         function FromUnityToJs() {
-     return vkBridge.send("VKWebAppGetUserInfo", {})
+      vkBridge.send("VKWebAppGetUserInfo", {})
                 .then((data) => {
                     const userId = data.id;
 
