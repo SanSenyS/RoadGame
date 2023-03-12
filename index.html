@@ -106,6 +106,18 @@
             });
         }
 
+        function getSaveData() {
+            vkBridge.send("VKWebAppStorageGet", { "keys": ["_GameOn"] }).then(data => {
+                console.log(data);
+                unityI.SendMessage('VkId', 'SaveData', JSON.stringify(data).toString());
+            });
+        }
+
+        function saveGame(data) {
+            vkBridge.send('VKWebAppStorageSet', { "key": "_save", "value": data }).then(_info => {
+                console.log("Saved!")
+            });
+        }
 
         function setFirstGame(data) {
             vkBridge.send('VKWebAppStorageSet', { "key": "_GameOn", "value": data }).then(_info => {
@@ -125,7 +137,6 @@
                 .then((data) => {
                     const userId = data.id;
                     unityI.SendMessage("VkId", "MethodName", userId.toString());
-                    alert(userId);
                 })
                 .catch((error) => {
                     console.log(error);
