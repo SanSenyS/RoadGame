@@ -98,10 +98,12 @@
         };
         document.body.appendChild(script);
 
-
+        function HandleMessage(message) {
+            alert(message);
+        }
 
         function FromUnityToJs() {
-            vkBridge.send("VKWebAppGetUserInfo", {})
+            return vkBridge.send("VKWebAppGetUserInfo", {})
                 .then((data) => {
                     const userId = data.id;
 
