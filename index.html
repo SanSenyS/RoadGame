@@ -106,6 +106,7 @@
             });
         }
 
+
         function setFirstGame(data) {
             vkBridge.send('VKWebAppStorageSet', { "key": "_GameOn", "value": data }).then(_info => {
                 console.log("Saved!")
