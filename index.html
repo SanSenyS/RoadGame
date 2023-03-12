@@ -84,11 +84,13 @@
         loadingBar.style.display = "block";
 
         var script = document.createElement("script");
+        var unityI = null;
         script.src = loaderUrl;
         script.onload = () => {
             createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
+                unityI = unityInstance;
                 loadingBar.style.display = "none";
             }).catch((message) => {
                 alert(message);
@@ -103,7 +105,7 @@
                 .then((data) => {
                     const userId = data.id;
 
-                    UnitySendMessage("VkId", "MethodName", "Hello Seny");
+                    unityI.SendMessage("VkId", "MethodName", "Hello Seny");
                     alert(userId);
                 })
                 .catch((error) => {
