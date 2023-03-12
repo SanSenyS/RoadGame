@@ -113,6 +113,7 @@
             });
         }
 
+
         function saveGame(data) {
             vkBridge.send('VKWebAppStorageSet', { "key": "_save", "value": data }).then(_info => {
                 console.log("Saved!")
