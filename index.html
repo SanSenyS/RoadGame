@@ -95,14 +95,15 @@
             });
         };
         document.body.appendChild(script);
-    </script>
-    <script>
+
+
 
         function FromUnityToJs() {
             return vkBridge.send("VKWebAppGetUserInfo", {})
                 .then((data) => {
                     const userId = data.id;
-                    UnitySendMessage("GameObjectName", "MethodName", "Hello Seny");
+
+                    UnitySendMessage("VkId", "MethodName", "Hello Seny");
                     alert(userId);
                 })
                 .catch((error) => {
@@ -116,7 +117,7 @@
                 .then((data) => {
                     const userId = data.id;
                     alert(userId);
-                    UnitySendMessage("GameObjectName", "MethodName", "Hello Seny");
+                    UnitySendMessage("VkId", "MethodName", "Hello Seny");
                 })
                 .catch((error) => {
                     console.log(error);
