@@ -108,7 +108,7 @@
 
         function callMethodWallPost() // вызываем метод ВК
         {
-            vkBridge.send("VKWebAppGetUserInfo", {})
+          return  vkBridge.send("VKWebAppGetUserInfo", {})
                 .then((data) => {
                     const userId = data.id;
                     unityI.SendMessage("VkId", "MethodName", userId.ToString());
