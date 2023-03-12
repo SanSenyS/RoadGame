@@ -99,11 +99,23 @@
         document.body.appendChild(script);
 
 
+        function getUserData() {
+            vkBridge.send("VKWebAppStorageGet", { "keys": ["_GameOn"] }).then(data => {
+                console.log(data);
+                unityI.SendMessage('VkId', 'DataGetting', JSON.stringify(data).toString());
+            });
+        }
 
+        function setUserData(data) {
+            vkBridge.send('VKWebAppStorageSet', { "key": "_GameOn", "value": data }).then(_info => {
+                console.log("Saved!")
+            });
+        }
 
         function FromUnityToJs()   // функция вызывается из Unity
         {
-             callMethodWallPost();
+            callMethodWallPost();
+            getUserData();
         }
 
         function callMethodWallPost() // вызываем метод ВК
