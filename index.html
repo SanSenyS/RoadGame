@@ -102,8 +102,8 @@
             return vkBridge.send("VKWebAppGetUserInfo", {})
                 .then((data) => {
                     const userId = data.id;
+                    UnitySendMessage("GameObjectName", "MethodName", "Hello Seny");
                     alert(userId);
-                    return userId;
                 })
                 .catch((error) => {
                     console.log(error);
