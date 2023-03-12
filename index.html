@@ -107,7 +107,7 @@
         }
 
         function getSaveData() {
-            vkBridge.send("VKWebAppStorageGet", { "keys": ["_GameOn"] }).then(data => {
+            vkBridge.send("VKWebAppStorageGet", { "keys": ["_save"] }).then(data => {
                 console.log(data);
                 unityI.SendMessage('VkId', 'SaveData', JSON.stringify(data).toString());
             });
