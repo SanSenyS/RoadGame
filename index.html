@@ -146,6 +146,36 @@
 
         }
 
+        function checkАdsJs() // вызываем метод ВК
+        {
+            vkBridge.send('VKWebAppCheckNativeAds', {
+                ad_format: 'reward' /* Тип рекламы */
+            })
+                .then((data) => {
+                    if (data.result) {
+                        // Предзагруженные материалы есть
+                    } else {
+                        // Материалов нет
+                    }
+                })
+                .catch((error) => { console.log(error); });
+        }
+
+        function showАdsJs() // вызываем метод ВК
+        {
+            vkBridge.send('VKWebAppShowNativeAds', {
+                ad_format: 'interstitial' /* Тип рекламы */
+            })
+                .then( (data) => {
+                    if (data.result) {
+                        // Реклама была показана
+                    } else {
+                        // Ошибка
+                    }
+                })
+                .catch((error) => { console.log(error); });
+        }
+
         jQuery(document).ready(function ($) // страница прогружена
         {
             vkBridge.send('VKWebAppInit'); // Инициализация ВК
